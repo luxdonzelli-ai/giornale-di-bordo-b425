@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#c40000"><meta name="description" content="Giornale di Bordo B425"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><link rel="stylesheet" href="styles.css"><title>Giornale di Bordo</title></head>
+<body><div id="app">
+<header><div><h1>Giornale di Bordo</h1><p>Registro mensile degli eventi rilevanti dell'Area B425</p></div><button id="installBtn" class="ghost" hidden>Installa App</button></header>
+<main>
+<section class="toolbar"><label>Mese di riferimento<input id="month" type="month"></label><div class="tools"><button id="exportCsv" class="secondary">Esporta CSV</button><button id="exportJson" class="secondary">Backup</button><label class="button secondary">Ripristina<input id="importJson" type="file" accept="application/json" hidden></label></div></section>
+<section class="stats" aria-label="Riepilogo"><article><b id="tot">0</b><span>Registrazioni</span></article><article><b id="amTot">0</b><span>Info su AM</span></article><article><b id="evTot">0</b><span>Eventi rilevanti</span></article><article><b id="bizTot">0</b><span>Business</span></article></section>
+<div class="layout">
+<form id="entryForm" class="card"><h2 id="formTitle">Nuova registrazione</h2><input id="editId" type="hidden">
+<label>Tipologia *<select id="category" required><option value="">Seleziona</option><option>Info su AM</option><option>Evento rilevante</option><option>Business vinto/perso</option></select></label>
+<div class="row"><label>Data *<input id="date" type="date" required></label><label>Orario *<input id="time" type="time" required></label></div>
+<label>Persone coinvolte *<input id="people" maxlength="180" required placeholder="Es. AM, cliente, collega"></label>
+<label>Cliente<input id="client" maxlength="180" placeholder="Ragione sociale o riferimento"></label>
+<label>Esito business<select id="outcome"><option>Non applicabile</option><option>Vinto</option><option>Perso</option><option>In corso</option></select></label>
+<label>Descrizione *<textarea id="description" maxlength="1600" required placeholder="Fatto, contesto ed esito"></textarea></label>
+<label>Livello di impatto<select id="impactLevel"><option>Basso</option><option selected>Medio</option><option>Alto</option><option>Critico</option></select></label>
+<label>Impatto su operatività e business<textarea id="impact" maxlength="1000" placeholder="Conseguenze, rischi, opportunità e azioni"></textarea></label>
+<label>Azioni successive<textarea id="actions" maxlength="800" placeholder="Follow-up, owner e prossimi passi"></textarea></label>
+<div class="buttons"><button class="primary" type="submit" id="saveBtn">Salva registrazione</button><button class="secondary" type="button" id="cancelBtn" hidden>Annulla</button></div><p id="notice" class="notice" aria-live="polite"></p></form>
+<section class="card"><h2>Registrazioni del mese</h2><div class="filters"><select id="filterCat"><option value="">Tutte le tipologie</option><option>Info su AM</option><option>Evento rilevante</option><option>Business vinto/perso</option></select><input id="search" type="search" placeholder="Cerca persona, cliente o parola"></div><div id="entries" class="entries"></div></section>
+</div></main><footer>I dati sono memorizzati su questo dispositivo. Usa Backup per conservarli o trasferirli.</footer></div><script src="app.js"></script></body></html>
